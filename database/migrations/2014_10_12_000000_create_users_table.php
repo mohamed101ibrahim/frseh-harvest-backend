@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('phone');
             $table->enum('gender',['male','female']);
             $table->integer('age');
-            $table->integer('Category');
+            $table->string('Country');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
