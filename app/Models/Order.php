@@ -10,4 +10,8 @@ class Order extends Model
     use HasFactory;
     protected $fillable = ['total','status','user_id','admin_id'];
     
+    public function items()
+    {
+        return $this->belongsToMany(Item::class, 'item_order');
+    }
 }
