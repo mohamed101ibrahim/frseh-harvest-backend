@@ -17,12 +17,16 @@ class Item extends Model
 
     public function packagings()
     {
-        return $this->belongsToMany(Packaging::class, 'item_packaging');
+        return $this->belongsToMany(Packaging::class, 'kinds');
     }
 
+   
+    
     public function orders()
     {
-        return $this->belongsToMany(Order::class, 'item_order');
+        return $this->belongsToMany(Order::class, 'takes')
+                    ->withPivot('quantity')
+                    ->withoutTimestamps();
     }
     
 }

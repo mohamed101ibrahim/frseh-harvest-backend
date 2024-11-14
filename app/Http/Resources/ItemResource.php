@@ -18,7 +18,6 @@ class ItemResource extends JsonResource
             'age' => $this->age,
             'category' => new CategoryResource($this->whenLoaded('category')),
             'packagings' => PackagingResource::collection($this->whenLoaded('packagings')),
-            'orders' => OrderResource::collection($this->whenLoaded('orders')),
         ];
     }
 }

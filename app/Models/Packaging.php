@@ -12,6 +12,6 @@ class Packaging extends Model
 
     public function items()
     {
-        return $this->belongsToMany(Item::class, 'item_packaging');
+        return $this->belongsToMany(Item::class, 'kinds');
     }
 }

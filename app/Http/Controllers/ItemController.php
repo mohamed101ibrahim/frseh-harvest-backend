@@ -10,7 +10,8 @@ class ItemController extends Controller
 {
     public function index()
     {
-        return ItemResource::collection(Item::with(['category', 'packagings', 'orders'])->get());
+        $items = ItemResource::collection(Item::with(['category', 'packagings'])->get());
+        return response()->json($items, 200, [], JSON_PRETTY_PRINT);
     }
 
     public function store(Request $request)
@@ -31,8 +32,9 @@ class ItemController extends Controller
 
     public function show($id)
     {
-        $item = Item::with(['category', 'packagings', 'orders'])->findOrFail($id);
-        return new ItemResource($item);
+        $item = Item::with(['category', 'packagings'])->findOrFail($id);
+        // dd($item);
+        return response()->json($item, 200, [], JSON_PRETTY_PRINT);
     }
 
     public function update(Request $request, $id)

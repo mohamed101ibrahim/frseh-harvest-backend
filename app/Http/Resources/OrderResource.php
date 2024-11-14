@@ -10,9 +10,11 @@ class OrderResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'order_date' => $this->created_at,
             'total' => $this->total,
+            'user_id' => $this->user_id,
             'status' => $this->status,
-            'items' => ItemResource::collection($this->whenLoaded('items')),
+            'items' => $this->takes ? TakesResource::collection($this->takes) : [],
         ];
     }
 }

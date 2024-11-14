@@ -9,7 +9,7 @@ use App\Http\Controllers\PackagingController;
 use App\Http\Controllers\OrderController;
 
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\TakesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,13 +28,26 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
+Route::get('/items', [ItemController::class, 'index']);
+Route::get('/items/{id}', [ItemController::class, 'show']);
+
 
 Route::apiResource('categories', CategoryController::class);
-Route::apiResource('items', ItemController::class);
+// Route::apiResource('items', ItemController::class);
 Route::apiResource('packagings', PackagingController::class);
-Route::apiResource('orders', OrderController::class);
+// Route::apiResource('orders', OrderController::class);
 
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
 Route::post('/logout',[AuthController::class,'logout']);
+
+Route::get('/orders', [OrderController::class, 'index']);
+Route::post('/orders/create', [OrderController::class, 'createOrder']);
+Route::get('/orders/{id}', [OrderController::class, 'show']);
+Route::put('/order-update/{id}', [OrderController::class, 'update']);
+Route::delete('/order-delete/{id}', [OrderController::class, 'destroy']);
+
+Route::get('/takes', [TakesController::class, 'index']);
+
+
 
