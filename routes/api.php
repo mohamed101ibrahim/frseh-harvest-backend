@@ -42,6 +42,9 @@ Route::post('/login',[AuthController::class,'login']);
 Route::post('/logout',[AuthController::class,'logout']);
 
 Route::get('/orders', [OrderController::class, 'index']);
+
+Route::get('/orders-Details', [OrderController::class, 'getAllOrderDetails']);
+
 Route::post('/orders/create', [OrderController::class, 'createOrder']);
 Route::get('/orders/{id}', [OrderController::class, 'show']);
 Route::put('/order-update/{id}', [OrderController::class, 'update']);
