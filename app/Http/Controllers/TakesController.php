@@ -16,4 +16,10 @@ class TakesController extends Controller
             'message' => 'Orders retrieved successfully',
         ], 200);
     }
+
+    public function deleteitemfromTakes($id)
+    {
+        Takes::destroy($id);
+        return response()->json(['message' => 'Item deleted successfully from Card ']);
+    }
 }

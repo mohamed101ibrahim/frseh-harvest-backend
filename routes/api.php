@@ -47,7 +47,11 @@ Route::get('/orders/{id}', [OrderController::class, 'show']);
 Route::put('/order-update/{id}', [OrderController::class, 'update']);
 Route::delete('/order-delete/{id}', [OrderController::class, 'destroy']);
 
+
+
 Route::get('/takes', [TakesController::class, 'index']);
+Route::delete('/deleteItem-takes/{id}', [TakesController::class, 'deleteitemfromTakes']);
+
 
 
 
