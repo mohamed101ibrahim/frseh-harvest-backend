@@ -5,7 +5,10 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Auth\Events\PasswordReset;
 
 class AuthController extends Controller
 {
@@ -62,4 +65,23 @@ class AuthController extends Controller
 
         return response()->json(['message' => 'Logged out successfully.']);
     }
+    public function sendResetLinkEmail(Request $request)
+{
+    $validated = Validator::make($request->all(), [
+        'email' => 'required|email|exists:users,email',
+    ]);
+
+    if ($validated->fails()) {
+        return response()->json(['message' => 'Invalid email address'], 400);
+    }
+
+    $status = Password::sendResetLink(
+        $request->only('email')
+    );
+
+    return $status == Password::RESET_LINK_SENT
+        ? response()->json(['message' => 'Reset link sent to your email.'])
+        : response()->json(['message' => 'Failed to send reset link'], 400);
+}
+
 }
