@@ -33,7 +33,6 @@ class OrderController extends Controller
            
             $order = Order::create([
                 'user_id' => $request->user_id,
-                'admin_id'=> $request->admin_id,
                 'total' => 0, 
                 'status' => "Waiting_Review",
             ]);

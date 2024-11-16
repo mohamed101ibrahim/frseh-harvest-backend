@@ -43,6 +43,7 @@ Route::post('/logout',[AuthController::class,'logout']);
 
 Route::get('/orders', [OrderController::class, 'index']);
 
+// show Orders For admin 
 Route::get('/orders-Details', [OrderController::class, 'getAllOrderDetails']);
 
 Route::post('/orders/create', [OrderController::class, 'createOrder']);
