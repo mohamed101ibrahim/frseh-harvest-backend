@@ -170,6 +170,7 @@ class OrderController extends Controller
             'orders.id as order_id',
             'users.name as user_name',
             'users.email as user_email',
+            'users.phone as user_phone',
             'orders.total as total_weight',
             'orders.status'
         )
@@ -185,6 +186,7 @@ class OrderController extends Controller
                 'order_id' => $order->order_id,
                 'user_name' => $order->user_name,
                 'user_email' => $order->user_email,
+                'user_phone' => $order->user_phone,
                 'total_items_taken' => $totalItems,
                 'total_weight' => $order->total_weight,
                 'order_status' => $order->status,
